@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sensor name="ENGINE_TEMPERATURE_SENSOR">
+    <values>5</values>
+    <values>10</values>
+    <values>20</values>
+    <values>40</values>
+    <values>80</values>
+    <values>135</values>
+    <values>135</values>
+    <values>135</values>
+    <values>135</values>
+    <values>120</values>
+    <values>110</values>
+    <values>90</values>
+    <values>80</values>
+    <values>60</values>
+    <values>50</values>
+    <values>40</values>
+    <values>30</values>
+    <values>20</values>
+    <values>10</values>
+    <values>5</values>
+    <values>0</values>
+</sensor>
