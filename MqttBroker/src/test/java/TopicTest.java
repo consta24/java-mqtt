@@ -1,4 +1,4 @@
-import app.models.Topic;
+import consta.spm.MqttBroker.models.PubSubTopicModel;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -9,18 +9,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TopicTest {
 
-    static Topic topic;
+    static PubSubTopicModel pubSubTopicModel;
 
     @BeforeAll
     static void setUpTopic() {
-        topic = new Topic("name", Arrays.asList("1", "2", "3"));
+        pubSubTopicModel = new PubSubTopicModel("name", Arrays.asList("1", "2", "3"));
     }
     @Test
     void testGetValues() {
-        assertEquals(Arrays.asList("1", "2", "3"), topic.getValues());
+        assertEquals(Arrays.asList("1", "2", "3"), pubSubTopicModel.getValues());
     }
     @Test
     void testGetTopic() {
-        assertEquals("name", topic.getName());
+        assertEquals("name", pubSubTopicModel.getName());
     }
 }

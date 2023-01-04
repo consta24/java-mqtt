@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<pubsubtopic name="OUTSIDE_TEMPERATURE_SENSOR">
+<sensor name="UNIT">
     <values>20</values>
     <values>18</values>
     <values>20</values>
     <values>16</values>
     <values>25</values>
-</pubsubtopic>
+</sensor>

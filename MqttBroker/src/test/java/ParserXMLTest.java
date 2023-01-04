@@ -1,5 +1,5 @@
-import app.datahandler.ParserXML;
-import app.models.Topic;
+import consta.spm.MqttBroker.datahandler.ParserXML;
+import consta.spm.MqttBroker.models.PubSubTopicModel;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -18,8 +18,8 @@ public class ParserXMLTest {
 
     @Test
     void parseTest() {
-        Topic expected = new Topic("UNIT", Arrays.asList("20", "18", "20", "16", "25"));
-        Topic actual = parserXML.parse(new File("testdata/UNIT_TEST_DATA.xml"));
+        PubSubTopicModel expected = new PubSubTopicModel("UNIT", Arrays.asList("20", "18", "20", "16", "25"));
+        PubSubTopicModel actual = parserXML.parse(new File("testdata/UNIT_TEST_DATA.xml"));
 
         assertEquals(expected.getValues(), actual.getValues());
         assertEquals(expected.getName(), actual.getName());

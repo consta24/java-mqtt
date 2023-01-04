@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>com.project.Spring</groupId>
+	<groupId>consta.spm.SpringMongoDb</groupId>
 	<artifactId>SpringMongoDb</artifactId>
 	<version>1.0</version>
 

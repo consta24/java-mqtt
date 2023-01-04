@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<sensor name="ENGINE_STATUS_SENSOR">
+<pubsubtopic name="ENGINE_STATUS_SENSOR">
     <values>0</values>
     <values>1</values>
     <values>1</values>
@@ -21,4 +21,4 @@
     <values>1</values>
     <values>1</values>
     <values>1</values>
-</sensor>
+</pubsubtopic>

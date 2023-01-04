@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<sensor name="ENGINE_TEMPERATURE_SENSOR">
+<pubsubtopic name="ENGINE_TEMPERATURE_SENSOR">
     <values>5</values>
     <values>10</values>
     <values>20</values>
@@ -21,4 +21,4 @@
     <values>10</values>
     <values>5</values>
     <values>0</values>
-</sensor>
+</pubsubtopic>

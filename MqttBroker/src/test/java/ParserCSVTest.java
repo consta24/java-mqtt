@@ -1,5 +1,5 @@
-import app.datahandler.ParserCSV;
-import app.models.Topic;
+import consta.spm.MqttBroker.datahandler.ParserCSV;
+import consta.spm.MqttBroker.models.PubSubTopicModel;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -18,8 +18,8 @@ public class ParserCSVTest {
 
     @Test
     void parseTest() {
-        Topic expected = new Topic("UNIT", Arrays.asList("15", "18", "20"));
-        Topic actual = parserCSV.parse(new File("testdata/UNIT_TEST_DATA.csv"));
+        PubSubTopicModel expected = new PubSubTopicModel("UNIT", Arrays.asList("15", "18", "20"));
+        PubSubTopicModel actual = parserCSV.parse(new File("testdata/UNIT_TEST_DATA.csv"));
 
         assertEquals(expected.getValues(), actual.getValues());
         assertEquals(expected.getName(), actual.getName());

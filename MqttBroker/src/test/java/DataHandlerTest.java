@@ -1,5 +1,5 @@
-import app.datahandler.DataHandler;
-import app.models.Topic;
+import consta.spm.MqttBroker.datahandler.DataHandler;
+import consta.spm.MqttBroker.models.PubSubTopicModel;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -24,12 +24,12 @@ public class DataHandlerTest {
     }
     @Test
     void parseDataTest(){
-        List<Topic> topics = dataHandler.parseData(dataHandler.extractFiles("testdata"));
+        List<PubSubTopicModel> pubSubTopicModels = dataHandler.parseData(dataHandler.extractFiles("testdata"));
 
-        assertEquals("UNIT", topics.get(0).getName());
-        assertEquals(Arrays.asList("15", "18", "20"), topics.get(0).getValues());
+        assertEquals("UNIT", pubSubTopicModels.get(0).getName());
+        assertEquals(Arrays.asList("15", "18", "20"), pubSubTopicModels.get(0).getValues());
 
-        assertEquals("UNIT", topics.get(1).getName());
-        assertEquals(Arrays.asList("20", "18", "20", "16", "25"), topics.get(1).getValues());
+        assertEquals("UNIT", pubSubTopicModels.get(1).getName());
+        assertEquals(Arrays.asList("20", "18", "20", "16", "25"), pubSubTopicModels.get(1).getValues());
     }
 }
