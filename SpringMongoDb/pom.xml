@@ -8,11 +8,11 @@
 		<version>2.7.2</version>
 		<relativePath/>
 	</parent>
+
 	<groupId>com.project.Spring</groupId>
-	<artifactId>spring-boot-mongodb</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-mongodb</name>
-	<description>MongoDB and Spring Boot</description>
+	<artifactId>SpringMongoDb</artifactId>
+	<version>1.0</version>
+
 	<properties>
 		<java.version>1.8</java.version>
 		<testcontainers.version>1.17.3</testcontainers.version>
