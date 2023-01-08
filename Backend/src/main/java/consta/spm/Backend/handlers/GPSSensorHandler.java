@@ -21,11 +21,14 @@ import static consta.spm.Backend.configuration.AppConfig.START_COORDINATES;
 
 public class GPSSensorHandler {
 
-    private static GPSSensorHandler sensor;
-    private LocalDateTime last_coordinates_ts = LocalDateTime.now();
-    private final List<String> route = new ArrayList<>();
-    private int sosCounter = 0;
     private static final Logger LOGGER = LogManager.getLogger(GPSSensorHandler.class);
+
+    private static GPSSensorHandler sensor;
+
+    private final List<String> route = new ArrayList<>();
+    private LocalDateTime lastCoordinatesDateTime = LocalDateTime.now();
+
+    private int sosCounter = 0;
 
 
     public static GPSSensorHandler getInstance() {
@@ -39,25 +42,26 @@ public class GPSSensorHandler {
         switch (coordinates) {
             case START_COORDINATES:
                 LOGGER.info("Starting Route");
+                break;
             case END_COORDINATES:
                 LOGGER.info("Arrived at destination");
+                break;
             case SOS_COORDINATES:
                 sosCounter++;
-                LOGGER.debug("SOS counter: {} out of 10", sosCounter);
+                LOGGER.info("SOS counter: {} out of 10", sosCounter);
                 if (sosCounter == 10) {
                     sendSOSMail();
                 }
+                break;
             default:
                 addToRoute(coordinates);
-                if (sosCounter != 0) {
-                    sosCounter = 0;
-                }
+                sosCounter = 0;
         }
 
     }
 
     private void addToRoute(String coordinates) {
-        last_coordinates_ts = LocalDateTime.now();
+        lastCoordinatesDateTime = LocalDateTime.now();
         route.add(coordinates);
     }
 
@@ -83,28 +87,18 @@ public class GPSSensorHandler {
 
         session.setDebug(true);
         try {
-            // Create a default MimeMessage object.
             MimeMessage message = new MimeMessage(session);
 
-            // Set From: header field of the header.
             message.setFrom(new InternetAddress(from));
-
-            // Set To: header field of the header.
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-
-            // Set Subject: header field
-            message.setSubject("This is the Subject Line!");
-
-            // Send the actual HTML message, as big as you like
+            message.setSubject("Car requires URGENT assistance!");
             message.setContent("<p>Hello,</p><p>Your car requires urgent assistance.</p><p>Last known location:"
-                    + route.get(route.size() - 1) + "</p><p>Last report received at: " + last_coordinates_ts
+                    + route.get(route.size() - 1) + "</p><p>Last report received at: " + lastCoordinatesDateTime
                     + "</p><p>Kind regards,</p><p>Car</p>", "text/html");
 
-            // Send message
             Transport.send(message);
         } catch (MessagingException mex) {
             LOGGER.error(mex.getMessage());
         }
     }
-
 }
