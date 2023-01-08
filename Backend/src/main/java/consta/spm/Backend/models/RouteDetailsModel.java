@@ -9,6 +9,7 @@ import static consta.spm.Backend.configuration.AppConfig.METERS_TO_KILOMETERS;
 import static consta.spm.Backend.configuration.AppConfig.MILISECONDS_TO_HOURS;
 
 public class RouteDetailsModel {
+
     private static final Logger LOGGER = LogManager.getLogger(RouteDetailsModel.class);
 
     private static int count = 0;

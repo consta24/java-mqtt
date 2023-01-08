@@ -16,7 +16,9 @@ import static consta.spm.Backend.configuration.AppConfig.OUTSIDE_TEMPERATURE_SEN
 import static consta.spm.Backend.configuration.AppConfig.ROUTE_PLANNING;
 
 public class TopicListenerFactory {
+
     private static final Logger LOGGER = LogManager.getLogger(TopicListenerFactory.class);
+
     private static final Map<String, Topic> factoryMap =
             Collections.unmodifiableMap(new HashMap<String, Topic>() {{
                 put(CAR_GPS_SENSOR, new CarGPSSensor());

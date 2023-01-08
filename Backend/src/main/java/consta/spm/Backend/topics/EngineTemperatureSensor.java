@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.eclipse.paho.client.mqttv3.IMqttMessageListener;
 
 public class EngineTemperatureSensor implements Topic {
+
     private static final Logger LOGGER = LogManager.getLogger(EngineTemperatureSensor.class);
 
     private static int engineTemperature = 0;

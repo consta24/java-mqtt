@@ -31,6 +31,7 @@ import static consta.spm.Backend.configuration.AppConfig.ROUTE_PLANNING_MODE;
 public class RoutePlanning implements Topic {
 
     private static final Logger LOGGER = LogManager.getLogger(RoutePlanning.class);
+
     private static RoutingApi routingApi;
     private static String startCoord = null;
     private static String endCoord = null;
@@ -42,6 +43,14 @@ public class RoutePlanning implements Topic {
 
         routingApi = new RoutingApi();
         routingApi.setApiClient(apiClient);
+    }
+
+    @Override
+    public IMqttMessageListener getListener() {
+        return (topic, msg) -> {
+            DatabaseHandler.insertSignal(topic, msg);
+            createRoutePlanning(msg);
+        };
     }
 
     private RouteResponse getRoute(String startCoord, String endCoord) {
@@ -90,20 +99,11 @@ public class RoutePlanning implements Topic {
         if (startCoord == null) {
             startCoord = validCoords;
             LOGGER.info("startCoord value = [{}] received.", startCoord);
-            LOGGER.info("Waiting for endCoord");
         } else {
             endCoord = validCoords;
             LOGGER.info("endCoord value = [{}] received.", endCoord);
             LOGGER.info("Route Planning started");
             showRoutes(getRoutesDetails(getRoute(startCoord, endCoord)));
         }
-    }
-
-    @Override
-    public IMqttMessageListener getListener() {
-        return (topic, msg) -> {
-            DatabaseHandler.insertSignal(topic, msg);
-            createRoutePlanning(msg);
-        };
     }
 }
