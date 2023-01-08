@@ -8,7 +8,7 @@ public class AppConfig {
 
     public static final String MQTT_SERVER_URI = "tcp://localhost:1883";
     public static final String MONGODB_SERVER_URI = "mongodb://localhost:27017";
-    public static final String MONGODB_DATA_DATABASE = "MiniProject";
+    public static final String MONGODB_DATA_DATABASE = "SPM";
     public static final String MONGODB_DATA_COLLECTION = "Messages";
 
     //PUB SUB TOPICS

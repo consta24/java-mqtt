@@ -2,7 +2,7 @@
 <Configuration status="WARN">
     <Appenders>
         <NoSql name="MongoDbAppender">
-            <MongoDb4 connection="mongodb://localhost:${sys:MongoDBTestPort:-27017}/MiniProject.logs" />
+            <MongoDb4 connection="mongodb://localhost:${sys:MongoDBTestPort:-27017}/SPM.logs" />
         </NoSql>
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
