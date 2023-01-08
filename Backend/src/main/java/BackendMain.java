@@ -7,11 +7,13 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 import java.util.UUID;
 
-import static consta.spm.Backend.AppConfigs.*;
+import static consta.spm.Backend.configuration.AppConfig.MONGODB_DATA_COLLECTION;
+import static consta.spm.Backend.configuration.AppConfig.MONGODB_DATA_DATABASE;
+import static consta.spm.Backend.configuration.AppConfig.MQTT_SERVER_URI;
 
-public class MainApp {
+public class BackendMain {
 
-    private static final Logger LOGGER = LogManager.getLogger(MainApp.class);
+    private static final Logger LOGGER = LogManager.getLogger(BackendMain.class);
 
     public static void main(String[] args) {
 

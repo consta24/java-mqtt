@@ -10,7 +10,7 @@ import com.graphhopper.directions.api.client.model.RouteResponsePath;
 import com.graphhopper.directions.api.client.model.RouteResponsePathInstructions;
 import com.graphhopper.directions.api.client.model.VehicleProfileId;
 import consta.spm.Backend.handlers.DatabaseHandler;
-import consta.spm.Backend.models.RouteDetails;
+import consta.spm.Backend.models.RouteDetailsModel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eclipse.paho.client.mqttv3.IMqttMessageListener;
@@ -21,7 +21,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static consta.spm.Backend.AppConfigs.*;
+import static consta.spm.Backend.configuration.AppConfig.ROUTE_PLANNING_ALGORITHM;
+import static consta.spm.Backend.configuration.AppConfig.ROUTE_PLANNING_API_KEY;
+import static consta.spm.Backend.configuration.AppConfig.ROUTE_PLANNING_AUTH;
+import static consta.spm.Backend.configuration.AppConfig.ROUTE_PLANNING_LANGUAGE;
+import static consta.spm.Backend.configuration.AppConfig.ROUTE_PLANNING_MAX_PATHS;
+import static consta.spm.Backend.configuration.AppConfig.ROUTE_PLANNING_MODE;
 
 public class RoutePlanning implements Topic {
 
@@ -53,9 +58,9 @@ public class RoutePlanning implements Topic {
         return Arrays.asList(gpsCoordinates.substring(32, gpsCoordinates.length() - 3).split("\\], \\["));
     }
 
-    private List<RouteDetails> getRoutesDetails(RouteResponse routeResponse) {
+    private List<RouteDetailsModel> getRoutesDetails(RouteResponse routeResponse) {
 
-        List<RouteDetails> routesDetails = new ArrayList<>();
+        List<RouteDetailsModel> routesDetails = new ArrayList<>();
 
         for (RouteResponsePath path : routeResponse.getPaths()) {
 
@@ -68,14 +73,14 @@ public class RoutePlanning implements Topic {
                 routeDistance += instructions.getDistance();
                 intersectionsCoord.add(getValidCoordinates(path).get(instructions.getInterval().get(1)));
             }
-            routesDetails.add(new RouteDetails(intersectionsCoord, routeTime, routeDistance));
+            routesDetails.add(new RouteDetailsModel(intersectionsCoord, routeTime, routeDistance));
         }
         return routesDetails;
     }
 
-    private void showRoutes(List<RouteDetails> routesDetails) {
-        for (RouteDetails routeDetails : routesDetails) {
-            routeDetails.logData();
+    private void showRoutes(List<RouteDetailsModel> routesDetails) {
+        for (RouteDetailsModel routeDetailsModel : routesDetails) {
+            routeDetailsModel.logData();
         }
     }
 

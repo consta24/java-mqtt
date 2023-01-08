@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="off">
-
-    <Filters>
-        <ThresholdFilter level="WARN" onMatch="DENY" onMismatch="NEUTRAL"/>
-        <ThresholdFilter level="FATAL" onMatch="DENY" onMismatch="NEUTRAL"/>
-        <ThresholdFilter level="INFO"  onMatch="ACCEPT" onMismatch="DENY"/>
-        <ThresholdFilter level="ERROR"  onMatch="ACCEPT" onMismatch="DENY"/>
-    </Filters>
-
+<Configuration status="WARN">
     <Appenders>
-        <NoSql name="MongoDbAppender">
-            <MongoDb4 connection="mongodb://localhost:27017/MqttBroker.logs" />
-        </NoSql>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
     </Appenders>
-
     <Loggers>
-        <Root level="INFO">
-            <AppenderRef ref="MongoDbAppender"/>
+        <Root level="ALL">
+            <AppenderRef ref="Console"/>
         </Root>
-
     </Loggers>
 </Configuration>

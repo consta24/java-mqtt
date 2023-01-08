@@ -1,10 +1,10 @@
-package consta.spm.Backend;
+package consta.spm.Backend.configuration;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class AppConfigs {
+public class AppConfig {
 
     public static final String MQTT_SERVER_URI = "tcp://localhost:1883";
     public static final String MONGODB_SERVER_URI = "mongodb://localhost:27017";
@@ -44,8 +44,6 @@ public class AppConfigs {
                     INSIDE_TEMPERATURE_SENSOR,
                     OUTSIDE_TEMPERATURE_SENSOR,
                     ENGINE_TEMPERATURE_SENSOR,
-                    ENGINE_STATUS_SENSOR,
-                    CAR_GPS_SENSOR,
-                    ROUTE_PLANNING
+                    ENGINE_STATUS_SENSOR
             ));
 }

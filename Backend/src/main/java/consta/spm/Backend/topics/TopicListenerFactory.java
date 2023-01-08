@@ -8,7 +8,12 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import static consta.spm.Backend.AppConfigs.*;
+import static consta.spm.Backend.configuration.AppConfig.CAR_GPS_SENSOR;
+import static consta.spm.Backend.configuration.AppConfig.ENGINE_STATUS_SENSOR;
+import static consta.spm.Backend.configuration.AppConfig.ENGINE_TEMPERATURE_SENSOR;
+import static consta.spm.Backend.configuration.AppConfig.INSIDE_TEMPERATURE_SENSOR;
+import static consta.spm.Backend.configuration.AppConfig.OUTSIDE_TEMPERATURE_SENSOR;
+import static consta.spm.Backend.configuration.AppConfig.ROUTE_PLANNING;
 
 public class TopicListenerFactory {
     private static final Logger LOGGER = LogManager.getLogger(TopicListenerFactory.class);

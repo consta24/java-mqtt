@@ -3,7 +3,11 @@ package consta.spm.Backend.handlers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.mail.*;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.time.LocalDateTime;
@@ -11,7 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import static consta.spm.Backend.AppConfigs.*;
+import static consta.spm.Backend.configuration.AppConfig.END_COORDINATES;
+import static consta.spm.Backend.configuration.AppConfig.SOS_COORDINATES;
+import static consta.spm.Backend.configuration.AppConfig.START_COORDINATES;
 
 public class GPSSensorHandler {
 
@@ -37,6 +43,7 @@ public class GPSSensorHandler {
                 LOGGER.info("Arrived at destination");
             case SOS_COORDINATES:
                 sosCounter++;
+                LOGGER.debug("SOS counter: {} out of 10", sosCounter);
                 if (sosCounter == 10) {
                     sendSOSMail();
                 }
@@ -55,7 +62,7 @@ public class GPSSensorHandler {
     }
 
     private void sendSOSMail() {
-        String to = "dariaoprina@gmail.com";
+        String to = "andrei24constantin@gmail.com";
         String from = "fromaddress4@gmail.com";
         String from_passwd = "xbgjrwoikvyjtnwx";
         String host = "smtp.gmail.com";
@@ -69,13 +76,9 @@ public class GPSSensorHandler {
         properties.put("mail.smtp.ssl.enable", "true");
         properties.put("mail.smtp.auth", "true");
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-
             protected PasswordAuthentication getPasswordAuthentication() {
-
                 return new PasswordAuthentication(from, from_passwd);
-
             }
-
         });
 
         session.setDebug(true);

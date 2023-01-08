@@ -6,7 +6,7 @@ import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
-import static consta.spm.Backend.AppConfigs.SUBSCRIBED_TOPICS;
+import static consta.spm.Backend.configuration.AppConfig.SUBSCRIBED_TOPICS;
 
 public class MqttClientHandler {
 

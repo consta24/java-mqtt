@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<sensor name="UNIT">
+<pubsubtopic name="UNIT">
     <values>20</values>
     <values>18</values>
     <values>20</values>
     <values>16</values>
     <values>25</values>
-</sensor>
+</pubsubtopic>

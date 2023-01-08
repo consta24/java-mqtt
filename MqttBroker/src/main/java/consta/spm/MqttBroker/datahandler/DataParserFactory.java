@@ -4,8 +4,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import static consta.spm.MqttBroker.AppConfig.EXTENSION_CSV;
-import static consta.spm.MqttBroker.AppConfig.EXTENSION_XML;
+import static consta.spm.MqttBroker.configuration.AppConfig.EXTENSION_CSV;
+import static consta.spm.MqttBroker.configuration.AppConfig.EXTENSION_XML;
 
 public class DataParserFactory {
 

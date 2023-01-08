@@ -1,6 +1,6 @@
 package consta.spm.Backend.topics;
 
-import consta.spm.Backend.AppConfigs;
+import consta.spm.Backend.configuration.AppConfig;
 import consta.spm.Backend.handlers.DatabaseHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,8 +8,10 @@ import org.eclipse.paho.client.mqttv3.IMqttMessageListener;
 
 public class EngineTemperatureSensor implements Topic {
     private static final Logger LOGGER = LogManager.getLogger(EngineTemperatureSensor.class);
+
     private static int engineTemperature = 0;
     private static int engineOverHeatCount = 0;
+
     private volatile static boolean engineHeat = false;
     private volatile static boolean engineOverHeat = false;
 
@@ -22,12 +24,12 @@ public class EngineTemperatureSensor implements Topic {
 
             LOGGER.info("ENGINE TEMPERATURE: {}", engineTemperature);
 
-            if (engineTemperature >= AppConfigs.ENGINE_TEMP_HEAT && !engineHeat) {
-                LOGGER.info("Engine temperature has reached over {} degrees, AC system can function", AppConfigs.ENGINE_TEMP_HEAT);
+            if (engineTemperature >= AppConfig.ENGINE_TEMP_HEAT && !engineHeat) {
+                LOGGER.info("Engine temperature has reached over {} degrees, AC system can function", AppConfig.ENGINE_TEMP_HEAT);
                 engineHeat = true;
             }
-            if (engineTemperature >= AppConfigs.ENGINE_TEMP_OVERHEAT && !engineOverHeat && EngineStatusSensor.getEngineRunning()) {
-                LOGGER.info("Engine temperature has reached over {} degrees, engine will stop in {} seconds", AppConfigs.ENGINE_TEMP_OVERHEAT, 6 - engineOverHeatCount * 2);
+            if (engineTemperature >= AppConfig.ENGINE_TEMP_OVERHEAT && !engineOverHeat && EngineStatusSensor.getEngineRunning()) {
+                LOGGER.info("Engine temperature has reached over {} degrees, engine will stop in {} seconds", AppConfig.ENGINE_TEMP_OVERHEAT, 6 - engineOverHeatCount * 2);
                 engineOverHeatCount++;
             }
             if (engineOverHeatCount == 4 && !engineOverHeat) {
@@ -35,7 +37,7 @@ public class EngineTemperatureSensor implements Topic {
                 EngineStatusSensor.setEngineRunning(false);
                 engineOverHeat = true;
             }
-            if (engineTemperature < AppConfigs.ENGINE_TEMP_OVERHEAT) {
+            if (engineTemperature < AppConfig.ENGINE_TEMP_OVERHEAT) {
                 engineOverHeatCount = 0;
                 if (engineOverHeat) {
                     LOGGER.info("Temperature back to normal, you can now start the engine");
@@ -43,7 +45,7 @@ public class EngineTemperatureSensor implements Topic {
                     engineOverHeat = false;
                 }
             }
-            if (engineTemperature < AppConfigs.ENGINE_TEMP_HEAT) {
+            if (engineTemperature < AppConfig.ENGINE_TEMP_HEAT) {
                 engineHeat = false;
             }
         };

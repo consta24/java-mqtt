@@ -5,11 +5,11 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
-import static consta.spm.Backend.AppConfigs.METERS_TO_KILOMETERS;
-import static consta.spm.Backend.AppConfigs.MILISECONDS_TO_HOURS;
+import static consta.spm.Backend.configuration.AppConfig.METERS_TO_KILOMETERS;
+import static consta.spm.Backend.configuration.AppConfig.MILISECONDS_TO_HOURS;
 
-public class RouteDetails {
-    private static final Logger LOGGER = LogManager.getLogger(RouteDetails.class);
+public class RouteDetailsModel {
+    private static final Logger LOGGER = LogManager.getLogger(RouteDetailsModel.class);
 
     private static int count = 0;
     private final int routeNumber;
@@ -17,7 +17,7 @@ public class RouteDetails {
     private final float routeTime;
     private final float routeDistance;
 
-    public RouteDetails(List<String> intersectionsCoordinates, float routeTime, float routeDistance) {
+    public RouteDetailsModel(List<String> intersectionsCoordinates, float routeTime, float routeDistance) {
         this.routeNumber = count;
         count++;
         this.intersectionsCoordinates = intersectionsCoordinates;

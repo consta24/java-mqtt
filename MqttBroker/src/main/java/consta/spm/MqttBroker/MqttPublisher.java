@@ -1,5 +1,6 @@
 package consta.spm.MqttBroker;
 
+import consta.spm.MqttBroker.configuration.AppConfig;
 import consta.spm.MqttBroker.models.PubSubTopicModel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

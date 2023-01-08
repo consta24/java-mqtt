@@ -2,25 +2,26 @@ import consta.spm.MqttBroker.models.PubSubTopicModel;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TopicTest {
 
     static PubSubTopicModel pubSubTopicModel;
 
     @BeforeAll
-    static void setUpTopic() {
+    public static void init() {
         pubSubTopicModel = new PubSubTopicModel("name", Arrays.asList("1", "2", "3"));
     }
+
     @Test
-    void testGetValues() {
+    public void testGetValues() {
         assertEquals(Arrays.asList("1", "2", "3"), pubSubTopicModel.getValues());
     }
+
     @Test
-    void testGetTopic() {
+    public void testGetTopic() {
         assertEquals("name", pubSubTopicModel.getName());
     }
 }

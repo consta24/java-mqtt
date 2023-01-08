@@ -1,9 +1,8 @@
-package consta.spm.MqttBroker;
+package consta.spm.MqttBroker.configuration;
 
 public class AppConfig {
+
     public static final String MQTT_SERVER_URI = "tcp://localhost:1883";
-    public static final String MONGODB_SERVER_URI = "mongodb://localhost:27017";
-    public static final String MONGODB_DATA_DATABASE = "MqttBroker";
     public static final String TOPIC_DATA_PATH = "data";
     public static final String EXTENSION_XML = ".xml";
     public static final String EXTENSION_CSV = ".csv";

@@ -7,24 +7,27 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DataHandlerTest {
+
     private static DataHandler dataHandler;
 
     @BeforeAll
-    static void init(){
+    public static void init() {
         dataHandler = new DataHandler();
     }
+
     @Test
-    void extractFilesTest() {
-        List<File> files = dataHandler.extractFiles("testdata");
+    public void extractFilesTest() {
+        List<File> files = dataHandler.extractFiles("src/test/resources");
         assertEquals("UNIT_TEST_DATA.csv", files.get(0).getName());
         assertEquals("UNIT_TEST_DATA.xml", files.get(1).getName());
     }
+
     @Test
-    void parseDataTest(){
-        List<PubSubTopicModel> pubSubTopicModels = dataHandler.parseData(dataHandler.extractFiles("testdata"));
+    public void parseDataTest() {
+        List<PubSubTopicModel> pubSubTopicModels = dataHandler.parseData(dataHandler.extractFiles("src/test/resources"));
 
         assertEquals("UNIT", pubSubTopicModels.get(0).getName());
         assertEquals(Arrays.asList("15", "18", "20"), pubSubTopicModels.get(0).getValues());

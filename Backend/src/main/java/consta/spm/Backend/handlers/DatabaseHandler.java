@@ -11,7 +11,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import java.util.Date;
 
-import static consta.spm.Backend.AppConfigs.MONGODB_SERVER_URI;
+import static consta.spm.Backend.configuration.AppConfig.MONGODB_SERVER_URI;
 
 public class DatabaseHandler {
 

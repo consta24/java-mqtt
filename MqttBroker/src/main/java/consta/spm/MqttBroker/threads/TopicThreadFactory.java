@@ -13,7 +13,7 @@ public class TopicThreadFactory implements ThreadFactory {
     @Override
     public Thread newThread(Runnable runnable) {
         Thread thread = new Thread(runnable);
-        LOGGER.info("Created thread {}_{} at: {}", thread.getId(), thread.getName(), new Date());
+        LOGGER.debug("Created thread {}_{} at: {}", thread.getId(), thread.getName(), new Date());
         return thread;
     }
 }

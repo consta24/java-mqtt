@@ -6,20 +6,20 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ParserXMLTest {
     private static ParserXML parserXML;
 
     @BeforeAll
-    static void init(){
+    public static void init() {
         parserXML = new ParserXML();
     }
 
     @Test
-    void parseTest() {
+    public void parseTest() {
         PubSubTopicModel expected = new PubSubTopicModel("UNIT", Arrays.asList("20", "18", "20", "16", "25"));
-        PubSubTopicModel actual = parserXML.parse(new File("testdata/UNIT_TEST_DATA.xml"));
+        PubSubTopicModel actual = parserXML.parse(new File("src/test/resources/UNIT_TEST_DATA.xml"));
 
         assertEquals(expected.getValues(), actual.getValues());
         assertEquals(expected.getName(), actual.getName());
